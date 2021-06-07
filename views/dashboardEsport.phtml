@@ -1,0 +1,31 @@
+ <section>
+ <h2>Gestion des esports</h2>
+    
+        <button><a href="index.php?page=addEsport">Ajouter un esport</a></button>
+    
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nom du esport</th>
+                <th>Image src</th>
+                <th>Image alt</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+            <?php foreach($esports as $esport): ?>
+            <tr>
+                <td><?= $esport['id'] ?></td>
+                <td><?= $esport['name'] ?></td>
+                <td><?= $esport['src'] ?></td>
+                <td><?= $esport['alt'] ?></td>
+                <td><button><a href="index.php?page=modifyEsport&id=<?=$esport['id']?>"><i class="fas fa-pen-nib"></i></a></button></td>
+                <td><button class="confirmButton" data-url="<?= "index.php?page=deleteEsport&id=".$esport['id'] ?>"><a><i class="fas fa-trash-alt"></i></a></button></td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+
+    </section>
+
+
+</main>
+    <script src="assets/js/main.js"></script>

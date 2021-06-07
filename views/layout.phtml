@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Olympic Virtual Series">
+	<title>Olympic Virtual Series</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/brands.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/fontawesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/solid.min.css">
+
+	<link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+	<header>
+		<div class="container"> <!--FLEX-->
+            
+	        <a href="#" class="logo_link"> <!--FLEX-->
+                <img src="assets/images/jovirtual.png" alt="Olympics" class="header-nav--logo_item"></img>
+            </a>
+            
+
+            <ul class="header-nav"><!--FLEX-->
+    
+                <li class="header-nav--list_item"><!--FLEX-->
+                    <a href="#" class="header-nav--list_link">E-Sports</a>
+                </li>
+                
+                <li class="header-nav--list_item"><!--FLEX-->
+                    <a href="#" class="header-nav--list_link">Players</a>
+                </li>
+                
+                
+                
+                
+                <li class="header-nav--list_item"><!--FLEX-->
+                    <a href="#" class="header-nav--list_link">Se connecter</a>
+                </li>
+                <?php if(isset($_SESSION['admin'])): ?>
+                    <li class="header-nav--list_item"><a href="index.php?page=dashboard" class="header-nav--list_link">Dashboard</a></li>
+                	<li class="header-nav--list_item"><a href="index.php?page=connexion&action=deco" class="header-nav--list_link">Deconnexion</a></li>
+                	<p>Bonjour <?= $_SESSION['admin'] ?></p>
+            	<?php else: ?>
+            		<li class="header-nav--list_item"><a href="index.php?page=admin" class="header-nav--list_link">Admin</a></li>
+                <?php endif; ?>
+		            
+                
+            </ul>
+      
+        
+        </div> <!-- end of .container -->
+    </header>
+    
+
+    
+   	<!-- code principal de la page -->
+	<?php include $template ?>
+   
+    
+    
+    
+
+    
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-nav"> <!--FLEX-->
+                <li class="footer-nav--list_item" >
+                    <a href="#" class="footer-nav--list_link">TM © Olympic</a>
+                </li>
+                <li class="footer-nav--list_item">
+                    <a href="#" class="footer-nav--list_link">Mentions légales</a>
+                </li>
+                <li class="footer-nav--list_item">
+                    <a href="#" class="footer-nav--list_link">Contact</a>
+                </li>
+                <li class="footer-nav--list_item">
+                    <a href="#" class="footer-nav--list_link">Carrières</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+        
+	
+</body>
+</html>
+	
+	
+	

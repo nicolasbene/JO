@@ -1,0 +1,38 @@
+<main>
+
+<h3>Modifier un esport</h3>
+	
+	<form method="post" enctype="multipart/form-data"> 
+
+		<p>
+		    <label for='name'>Nom du esport</label>
+		    <input type="text" name="name" id="name" value="<?= htmlspecialchars($esport['name']) ?>"/>
+		</p>
+		<p>
+		    <label for='description'>Description</label>
+		    <input type="text" name="description" id="description" value="<?= htmlspecialchars($esport['description']) ?>"/>
+		</p>
+		<p>
+		    <label for='date_debut'>Date de début</label>
+		    <input type="date" name="date_debut" id="date_debut" value="<?= htmlspecialchars($esport['date_debut']) ?>"/>
+		</p>
+		<p>
+		    <label for='date_fin'>Date de fin</label>
+		    <input type="date" name="date_fin" id="date_fin"value="<?= htmlspecialchars($esport['date_fin']) ?>"/>
+		</p>
+		<p>
+			<label for="img">Image</label>
+			<input type="file" name="img" id="img"/>
+			<input type="hidden" name="imgBdd" id="imgBdd" value="<?= htmlspecialchars($esport['src']) ?>"/>
+			
+		</p>
+	
+		<p>	
+			<label for="alt">Alt</label>
+			<input type="text" name="alt" id="alt" value="<?= htmlspecialchars($esport['alt']) ?>"/>
+		</p>
+
+			<button type="submit">Enregistrer</button>
+	</form>
+	
+</main>
