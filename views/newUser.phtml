@@ -1,0 +1,63 @@
+<main>
+	<form method="post">
+		<p>
+		    <label for='esport'>Esport</label>
+			<select name="esport" id="esport">
+			    <option value="">--Please choose an esport--</option>
+			    <?php foreach($esports as $esport): ?>
+                <option value="<?= $esport['id'] ?>"><?= htmlspecialchars($esport['name']) ?></option>
+                <?php endforeach; ?>
+            </select>
+        </p>
+        
+        <p>
+		    <label for='continent'>Continent</label>
+			<select name="continent" id="continent">
+			    <option value="">--Please choose a continent--</option>
+			    <?php foreach($continents as $continent): ?>
+                <option value="<?= $continent['id'] ?>"><?= htmlspecialchars($continent['name']) ?></option>
+                <?php endforeach; ?>
+            </select>
+        </p>
+        
+		<p>
+		    <label for='pays'>Pays</label>
+			<select name="pays" id="pays">
+			    <option value="">--Please choose a country--</option>
+			    <?php foreach($countries as $country): ?>
+                <option value="<?= $country['id'] ?>"><?= htmlspecialchars($country['name']) ?></option>
+                <?php endforeach; ?>
+            </select>
+        </p>
+        
+        
+		<p>
+			<label for='firstName'>Prénom</label>
+			<input type="text" name="firstName" id="firstName" value="<?= (isset($_POST['firstName']))? $_POST['firstName']:"" ?>">
+		</p>
+		<p>
+			<label for='lastName'>Nom</label>
+			<input type="text" name="lastName" id="lastName" value="<?= (isset($_POST['lastName']))? $_POST['lastName']:"" ?>">
+		</p>
+		<p>
+			<label for='email'>Email</label>
+			<input type="email" name="email" id="email">
+				<p><?= $this -> message1 ?></p>
+		</p>
+		<p>
+			<label for='age'>Age</label>
+			<input type="number" name="age" id="age" value="<?= (isset($_POST['age']))? $_POST['age']:"" ?>">
+		</p>
+	
+		
+		
+		
+		<p>
+			<label for='pw'>Mot de passe</label>
+			<input type="password" name="pw" id="pw">
+		</p>
+		
+		<button>Créer le compte</button>
+	</form>
+
+</main>

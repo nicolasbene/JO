@@ -68,9 +68,18 @@ else
 			break;
 		
 		case 'connexion':
-			$controller = new Controllers\ConnexionController();
+			$controller = new Controllers\UserConnexionController();
+			break;
+		
+		case 'newUser':
+			$controller = new Controllers\NewUserController();
 			break;
 			
+		case 'userDashboard':
+			$controller = new Controllers\UserDashboardController();
+			break;
+	
+		
 	
 		
 	}

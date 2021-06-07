@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-class ConnexionController {
+class UserConnexionController {
     private $message1;
     private $message2;
     
@@ -11,7 +11,7 @@ class ConnexionController {
         $this -> message1 = "";
         $this -> message2 = "";
         $this -> display();
-        
+      
         if(!empty($_POST))
 		{
 		    $this -> submit();
@@ -27,7 +27,7 @@ class ConnexionController {
 	public function display()
 	{
 		//afficher le formulaire de connexion
-            $template = 'views/admin.phtml';
+            $template = 'views/connexion.phtml';
             include 'views/layout.phtml';
 	}
 	public function disconnect()
@@ -37,21 +37,20 @@ class ConnexionController {
 			header('location:index.php');
 			exit;
 	}
+	
 	public function submit() 
 	{
-	    	include 'models/User.php';
+	    	include 'models/Users.php';
 			
 			$email = $_POST['email'];
-			$password = $_POST['password'];
+			$pw = $_POST['pw'];
 			
 			//comparer avec ce que j'ai en bdd
-			$model = new \Models\User();
+			$model = new \Models\Users();
 			//aller chercher les infos de l'utilisateur/iden qui essaye de se connecter
 			$user = $model -> getUserByEmail($email);
 			
 			//si l'identifiant existe dans la base alors âdmin contiendra les infos de cet admin
-			
-			//sinon $admin contiendra false
 			
 			if(!$user)
 			{
@@ -60,15 +59,18 @@ class ConnexionController {
 			else
 			{
 				//vérifier le mot de passe
-				if(password_verify($password,$user['password']))
+				if(password_verify($pw,$user['password']))
 				{
-					//le mot de passe correcpond
-					//connecter l'utilisateur
+					
+					//connecter l'utilisateurs
 					$_SESSION['user'] = $user['firstname'].' '.$user['lastname'];
+					
 					$_SESSION['idUser'] = $user['id'];
 					//redirige vers la page tableau de bord du backoffice
-					header('location:index.php?page=accueil');
+					header('location:index.php?page=userDashboard');
 					exit;
+					
+					
 				}
 				else
 				{
