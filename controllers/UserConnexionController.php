@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-class UserConnexionController {
+class UserController {
     private $message1;
     private $message2;
     
@@ -11,6 +11,7 @@ class UserConnexionController {
         $this -> message1 = "";
         $this -> message2 = "";
         $this -> display();
+        
       
         if(!empty($_POST))
 		{
@@ -40,43 +41,45 @@ class UserConnexionController {
 	
 	public function submit() 
 	{
-	    	include 'models/Users.php';
-			
-			$email = $_POST['email'];
-			$pw = $_POST['pw'];
-			
-			//comparer avec ce que j'ai en bdd
-			$model = new \Models\Users();
-			//aller chercher les infos de l'utilisateur/iden qui essaye de se connecter
-			$user = $model -> getUserByEmail($email);
-			
-			//si l'identifiant existe dans la base alors âdmin contiendra les infos de cet admin
-			
-			if(!$user)
+    	include 'models/Admin.php';
+		
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+		
+		//comparer avec ce que j'ai en bdd
+		$model = new \Models\Users();
+		//aller chercher les infos de l'utilisateur/iden qui essaye de se connecter
+		$user = $model -> getUserByEmail($email);
+		
+		
+		//si l'identifiant existe dans la base alors âdmin contiendra les infos de cet admin
+		
+		//sinon $admin contiendra false
+		
+		if(!$user)
+		{
+			$this -> message1 = "Mauvais identifiant";
+		}
+		else
+		{
+			//vérifier le mot de passe
+			if(password_verify($password,$user['password']))
 			{
-				$this -> message1 = "Mauvais identifiant";
+				//le mot de passe correcpond
+				//connecter l'utilisateur
+				$_SESSION['user'] = $user['firstname'].' '.$user['lastname'];
+				//redirige vers la page tableau de bord du backoffice
+				header('location:index.php?page=userDashboard');
+				exit;
+				
 			}
 			else
 			{
-				//vérifier le mot de passe
-				if(password_verify($pw,$user['password']))
-				{
-					
-					//connecter l'utilisateurs
-					$_SESSION['user'] = $user['firstname'].' '.$user['lastname'];
-					
-					$_SESSION['idUser'] = $user['id'];
-					//redirige vers la page tableau de bord du backoffice
-					header('location:index.php?page=userDashboard');
-					exit;
-					
-					
-				}
-				else
-				{
-					$this -> message2 = "Mauvais mot de passe";
-				}
+				$this -> message2 = "Mauvais mot de passe";
+			
 			}
+		}
+	
 	}
 }
 

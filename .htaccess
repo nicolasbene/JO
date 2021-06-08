@@ -6,8 +6,10 @@ RewriteEngine on
 # un commentaire
 RewriteRule ^accueil$  index.php [L]
 RewriteRule ^admin$  index.php?page=admin [L]
+RewriteRule ^user$  index.php?page=user [L]
+
 RewriteRule ^dashboard$  index.php?page=dashboard [L]
-RewriteRule ^connexion$  index.php?page=connexion [L]
+RewriteRule ^userConnexion$  index.php?page=userConnexion [L]
 RewriteRule ^userDashboard$  index.php?page=userDashboard [L]
 RewriteRule ^newUser$  index.php?page=newUser [L]
 

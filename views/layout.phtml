@@ -34,11 +34,11 @@
                 </li>
         
                 <?php if(isset($_SESSION['user'])): ?>
-        		    <li class="header-nav--list_item"><a href="booking" class="header-nav--list_link">Réservation</a></li>
+        		    <li class="header-nav--list_item"><a href="profil" class="header-nav--list_link">Profil</a></li>
     				<li class="header-nav--list_item"><a href="index.php?page=connexion&action=deco" class="header-nav--list_link">Deconnexion</a></li>
     				<p>Bonjour <?= $_SESSION['user'] ?></p>
     			<?php else: ?>
-    				<li class="header-nav--list_item"><a href="connexion" class="header-nav--list_link">Se connecter</a></li>
+    				<li class="header-nav--list_item"><a href="index.php?page=user" class="header-nav--list_link">Se connecter</a></li>
     			<?php endif; ?>
                 
                 

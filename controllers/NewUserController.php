@@ -10,8 +10,7 @@ class NewUserController {
     {
     	$this -> message1 = "";
         $this -> message2 = "";
-        $this -> display();
-        
+
         if(!empty($_POST))
 		{
 		    $this -> submit();
@@ -50,6 +49,8 @@ class NewUserController {
 	//traitement du formulaire
 	public function submit()
 	{
+		include 'models/Users.php';
+		
 		//préparer les données pour les mettre dans la base de données
 		$firstName = $_POST['firstName'];
 		$lastName= $_POST['lastName'];
@@ -60,11 +61,18 @@ class NewUserController {
 		$esport = $_POST['esport'];
 		$continent = $_POST['continent'];
 		
-		//mettre les datas en bdd
+		//comparer avec ce que j'ai en bdd
 		$model = new \Models\Users();
+		//aller chercher les infos de l'utilisateur/iden qui essaye de se connecter
+		$user = $model -> getUserByEmail($email);
+			
+		//mettre les datas en bdd
+		$_SESSION['user'] = $user['firstname'].' '.$user['lastname'];
+	/*	$_SESSION['idUser'] = $user['userId'];*/
+		
 		try {
-		$model -> AddUser($email, $pw, $firstName, $lastName, $age, $pays, $esport);
-		header('location:index.php?page=accueil');
+		$model -> addUser($email, $pw, $firstName, $lastName, $age, $pays, $esport);
+		header('location:index.php?page=userDashboard');
 			exit;
 		}
 		catch(\Exception $e){
@@ -76,7 +84,7 @@ class NewUserController {
 	
 	public function IsConnected() 
 	{
-	    	include 'models/User.php';
+	    	include 'models/Users.php';
 			
 			$email = $_POST['email'];
 			$pw = $_POST['pw'];
