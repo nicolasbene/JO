@@ -79,6 +79,7 @@ else
 			
 		case 'userDashboard':
 			$controller = new Controllers\UserDashboardController();
+			$controller -> display();
 			break;
 		
 		case 'user':

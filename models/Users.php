@@ -28,7 +28,7 @@ class Users extends Database
 	
 	public function getUserById($id):?array
 	{
-		return $this -> findOne("SELECT users.id AS userId, users.email AS userEmail, users.password, firstname, lastname, age, id_pays, id_esport, pays.name AS paysName, esports.name AS esportName FROM users 
+		return $this -> findAll("SELECT users.id AS userId, users.email AS userEmail, users.password, firstname, lastname, age, id_pays, id_esport, pays.name AS paysName, esports.name AS esportName FROM users 
 		INNER JOIN pays ON users.id_pays = pays.id 
 		INNER JOIN esports ON users.id_esport = esports.id 
 		WHERE users.id = ?",[$id]);
