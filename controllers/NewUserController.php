@@ -68,7 +68,7 @@ class NewUserController {
 			
 		//mettre les datas en bdd
 		$_SESSION['user'] = $user['firstname'].' '.$user['lastname'];
-	/*	$_SESSION['idUser'] = $user['userId'];*/
+		$_SESSION['userId'] = $user['userId'];
 		
 		try {
 		$model -> addUser($email, $pw, $firstName, $lastName, $age, $pays, $esport);

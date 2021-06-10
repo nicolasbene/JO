@@ -15,7 +15,8 @@ class UserDashboardController {
 
 	public function display()
 	{
-		$id = $_SESSION['idUser'];
+	
+		$id = $_SESSION['userId'];
 		$model = new \Models\Users();
 	    $users = $model -> getUserById($id);
 	    

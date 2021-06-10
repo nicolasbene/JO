@@ -67,9 +67,8 @@ class UserController {
 				{
 					//le mot de passe correcpond
 					//connecter l'utilisateur
-						$_SESSION['idUser'] = $user['userId'];
 					$_SESSION['user'] = $user['firstname'].' '.$user['lastname'];
-				
+					$_SESSION['userId'] = $user['userId'];
 
 					//redirige vers la page tableau de bord du backoffice
 					header('location:index.php?page=userDashboard');
