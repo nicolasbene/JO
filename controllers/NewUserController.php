@@ -50,47 +50,48 @@ class NewUserController {
 	public function submit()
 	{
 		include 'models/Users.php';
-		
 		//préparer les données pour les mettre dans la base de données
 		$firstName = $_POST['firstName'];
 		$lastName= $_POST['lastName'];
 		$email = $_POST['email'];
 		$age= $_POST['age'];
-		$pw = password_hash($_POST['pw'], PASSWORD_DEFAULT);
+		$pw = password_hash($_POST['password'], PASSWORD_DEFAULT);
 		$pays = $_POST['pays'];
 		$esport = $_POST['esport'];
 		$continent = $_POST['continent'];
 		
+		$_SESSION['user'] = $firstName.' '.$lastName;
 		//comparer avec ce que j'ai en bdd
 		$model = new \Models\Users();
+		
+	
+		//mettre les datas en bdd
+		$model -> AddUser($email, $pw, $firstName, $lastName, $age, $pays, $esport);
+		
 		//aller chercher les infos de l'utilisateur/iden qui essaye de se connecter
 		$user = $model -> getUserByEmail($email);
-			
-		//mettre les datas en bdd
-		$_SESSION['user'] = $user['firstname'].' '.$user['lastname'];
+		
 		$_SESSION['userId'] = $user['userId'];
 		
-		try {
-		$model -> addUser($email, $pw, $firstName, $lastName, $age, $pays, $esport);
 		header('location:index.php?page=userDashboard');
 			exit;
-		}
-		catch(\Exception $e){
+		
+	/*	catch(\Exception $e){
 			$this -> message1 = "Cet email est déjà utilisé";
-		}
+		}*/
 	}
 	
  
 	
 	public function IsConnected() 
 	{
-	    	include 'models/Users.php';
+	  
 			
 			$email = $_POST['email'];
 			$pw = $_POST['pw'];
 			
 			//comparer avec ce que j'ai en bdd
-			$model = new \Models\User();
+			$model = new \Models\Users();
 			//aller chercher les infos de l'utilisateur/iden qui essaye de se connecter
 			$user = $model -> getUserByEmail($email);
 			

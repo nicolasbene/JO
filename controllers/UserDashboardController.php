@@ -15,13 +15,12 @@ class UserDashboardController {
 
 	public function display()
 	{
-	
+		var_dump($_SESSION);
 		$id = $_SESSION['userId'];
+		
+		
 		$model = new \Models\Users();
 	    $users = $model -> getUserById($id);
-	    
-	    
-
 	    
         $template = 'views/userDashboard.phtml';
         include 'views/layout.phtml';

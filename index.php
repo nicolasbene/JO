@@ -67,13 +67,13 @@ else
 			$controller -> deleteEsport();
 			break;
 		
-		case 'connexion':
-			$controller = new Controllers\UserController();
-		
-			break;
-		
 		case 'newUser':
 			$controller = new Controllers\NewUserController();
+			$controller -> display();
+			break;
+		
+		case 'user':
+			$controller = new Controllers\UserController();
 			$controller -> display();
 			break;
 			
@@ -81,15 +81,6 @@ else
 			$controller = new Controllers\UserDashboardController();
 			$controller -> display();
 			break;
-		
-		case 'user':
-			$controller = new Controllers\UserController();
-			$controller -> display();
-
-			break;
-	
-		
-	
 		
 	}
 }

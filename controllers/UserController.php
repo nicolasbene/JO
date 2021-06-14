@@ -50,14 +50,13 @@ class UserController {
 			//aller chercher les infos de l'utilisateur/iden qui essaye de se connecter
 			$user = $model -> getUserByEmail($email);
 			
-			
 			//si l'identifiant existe dans la base alors âdmin contiendra les infos de cet user
 			
 			//sinon $user contiendra false
 			
 			if(!$user)
 			{
-				$this -> message1 = "Mauvais identifiantnciencie";
+				$this -> message1 = "Mauvais identifiant";
 
 			}
 			else
