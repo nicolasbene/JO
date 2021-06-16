@@ -15,7 +15,7 @@ class UserDashboardController {
 
 	public function display()
 	{
-		var_dump($_SESSION);
+	
 		$id = $_SESSION['userId'];
 		
 		

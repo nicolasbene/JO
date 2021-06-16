@@ -32,8 +32,13 @@ else
 		case 'dashboard':
 			$controller = new Controllers\DashboardController();
 			break;
+		
+		case 'deleteEsport':
+			$controller = new Controllers\DashboardController();
+			$controller -> delete();
+			break;
 			
-		case 'dashboardEsport':
+		case 'dashboardAdminEsport':
 			$controller = new Controllers\EsportController();
 			$controller -> display();
 			break;
@@ -81,6 +86,8 @@ else
 			$controller = new Controllers\UserDashboardController();
 			$controller -> display();
 			break;
-		
+			
+		case 'players':
+			$controller = new Controllers\PlayersController();
 	}
 }

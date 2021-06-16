@@ -19,7 +19,7 @@ class EsportController {
 		$model = new \Models\Esport();
 		$esports = $model -> getAllEsports();
 
-        $template = 'views/dashboardEsport.phtml';
+        $template = 'views/dashboardAdminEsport.phtml';
         include 'views/layout.phtml';
 
         
@@ -28,7 +28,8 @@ class EsportController {
 	public function deleteEsport()
 	{
 	    $model = new \Models\Esport();
-	    $model -> deleteEsport($_GET['id']);
+	    $model -> delete($_GET['id']);
+	    
 	}
 	
 	public function displayAdd()
@@ -56,7 +57,7 @@ class EsportController {
 		$model = new \Models\Esport();
 		$model -> AddEsport($nom, $description, $date_debut, $date_fin, $image, $alt);
             
-		header('location:index.php?page=dashboardEsport');
+		header('location:index.php?page=dashboardAdminEsport');
 			exit;
 	}
 	
@@ -93,7 +94,7 @@ class EsportController {
 		$model = new \Models\Esport();
 		$modifyEsport = $model -> ModifyEsport($_GET['id'], $nom, $description, $date_debut, $date_fin, $image, $alt);
             
-		header('location:index.php?page=dashboardEsport');
+		header('location:index.php?page=#');
 			exit;
 	}
 	

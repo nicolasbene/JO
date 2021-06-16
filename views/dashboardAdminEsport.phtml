@@ -19,7 +19,8 @@
                 <td><?= $esport['src'] ?></td>
                 <td><?= $esport['alt'] ?></td>
                 <td><button><a href="index.php?page=modifyEsport&id=<?=$esport['id']?>"><i class="fas fa-pen-nib"></i></a></button></td>
-                <td><button class="confirmButton" data-url="<?= "index.php?page=deleteEsport&id=".$esport['id'] ?>"><a><i class="fas fa-trash-alt"></i></a></button></td>
+                <td><button class="confirmButton" data-url="<?= "index.php?page=deleteEsport&id=".$esport['id']?>"><a><i class="fas fa-trash-alt"></i></a></button></td>
+
             </tr>
             <?php endforeach; ?>
         </table>

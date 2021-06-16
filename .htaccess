@@ -12,4 +12,5 @@ RewriteRule ^dashboard$  index.php?page=dashboard [L]
 RewriteRule ^userConnexion$  index.php?page=userConnexion [L]
 RewriteRule ^userDashboard$  index.php?page=userDashboard [L]
 RewriteRule ^newUser$  index.php?page=newUser [L]
+RewriteRule ^players  index.php?page=players [L]
 

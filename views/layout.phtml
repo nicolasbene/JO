@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/fontawesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/solid.min.css">
 
-	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
 
@@ -18,7 +18,7 @@
 	<header>
 		<div class="container"> <!--FLEX-->
             
-	        <a href="#" class="logo_link"> <!--FLEX-->
+	        <a href="accueil" class="logo_link"> <!--FLEX-->
                 <img src="assets/images/jovirtual.png" alt="Olympics" class="header-nav--logo_item"></img>
             </a>
             
@@ -30,7 +30,7 @@
                 </li>
                 
                 <li class="header-nav--list_item"><!--FLEX-->
-                    <a href="#" class="header-nav--list_link">Players</a>
+                    <a href="players" class="header-nav--list_link">Players</a>
                 </li>
         
                 <?php if(isset($_SESSION['user'])): ?>

@@ -27,6 +27,7 @@ class DashboardController
             include 'views/layout.phtml';
 	}
 	
+	
 	public function disconnect()
 	{
 	    //je déconnecte l'utilisateur

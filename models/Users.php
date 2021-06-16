@@ -6,7 +6,9 @@ class Users extends Database
 {
 	public function getAllUsers():array
 	{
-		return $this -> findAll("SELECT email, password, firstname, lastname, age FROM users
+		return $this -> findAll("SELECT users.id AS userId, esports.name AS esportName, pays.name AS paysName, email, password, firstname, lastname, age FROM users
+		INNER JOIN pays ON users.id_pays = pays.id 
+		INNER JOIN esports ON users.id_esport = esports.id 
 		");
 	}
 	

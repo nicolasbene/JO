@@ -14,13 +14,13 @@ class Esport extends Database
 	
 	public function AddEsport($nom, $description, $date_debut, $date_fin, $image, $alt)
 	{
-		//requêtes sql qui permet l'ajout du plat
+		//requêtes sql qui permet l'ajout du esport
 		$this -> query("INSERT INTO esports(name, description, date_debut, date_fin, src, alt) VALUES (?,?,?,?,?,?)",[$nom, $description, $date_debut, $date_fin, $image, $alt]);
 	}
 	
 	public function ModifyEsport($id, $nom, $description, $date_debut, $date_fin, $image, $alt)
 	{
-		//requêtes sql qui permet de modifier les plats
+		//requêtes sql qui permet de modifier les esports
 		$this -> query("UPDATE esports 
 		SET name = ?, description = ?, date_debut = ?, date_fin= ?, src = ?, alt = ?
 		WHERE id = ?",[$nom, $description, $date_debut, $date_fin, $image, $alt, $id]);
@@ -28,7 +28,7 @@ class Esport extends Database
 	
 	public function findEsportById($id):?array
 	{   
-	    //requêtes sql qui permet de sélectionner un plat
+	    //requêtes sql qui permet de sélectionner un esport
 		return $this -> findOne("
 		SELECT id, name, description, date_debut, date_fin, src, alt 
 		FROM esports 
@@ -37,7 +37,7 @@ class Esport extends Database
 	
 	public function deleteEsport($id)
 	{
-		//requêtes sql qui permet de supprimer un plat
-		$this -> query("DELETE FROM esports WHERE id = ? ",[$id]);
+		//requêtes sql qui permet de supprimer un esport
+		$this -> query("DELETE FROM esports WHERE id = ?",[$id]);
 	}
 }

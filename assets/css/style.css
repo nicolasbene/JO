@@ -44,10 +44,27 @@ HEADER
     text-transform: uppercase;
 }
 
+.header-nav--list_link::after {
+    content: '';
+    display: flex;
+    width: 0;
+    height: 2px;
+    background : black;
+    transition: width .3s
+}
+
+.header-nav--list_link:hover::after {
+    width: 100%;
+    transition: width .3s;
+    
+}
+
 .header-nav--logo_item {
     max-width: 50%;
 	height: auto;
 }
+
+
 
 
 /* *****************************************************************

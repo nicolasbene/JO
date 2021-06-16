@@ -49,76 +49,42 @@ class NewUserController {
 	//traitement du formulaire
 	public function submit()
 	{
-		include 'models/Users.php';
-		//préparer les données pour les mettre dans la base de données
-		$firstName = $_POST['firstName'];
-		$lastName= $_POST['lastName'];
-		$email = $_POST['email'];
-		$age= $_POST['age'];
-		$pw = password_hash($_POST['password'], PASSWORD_DEFAULT);
-		$pays = $_POST['pays'];
-		$esport = $_POST['esport'];
-		$continent = $_POST['continent'];
-		
-		$_SESSION['user'] = $firstName.' '.$lastName;
-		//comparer avec ce que j'ai en bdd
-		$model = new \Models\Users();
-		
-	
-		//mettre les datas en bdd
-		$model -> AddUser($email, $pw, $firstName, $lastName, $age, $pays, $esport);
-		
-		//aller chercher les infos de l'utilisateur/iden qui essaye de se connecter
-		$user = $model -> getUserByEmail($email);
-		
-		$_SESSION['userId'] = $user['userId'];
-		
-		header('location:index.php?page=userDashboard');
-			exit;
-		
-	/*	catch(\Exception $e){
-			$this -> message1 = "Cet email est déjà utilisé";
-		}*/
-	}
-	
- 
-	
-	public function IsConnected() 
-	{
-	  
-			
+		if (isset( $_POST['firstName']) && !empty($_POST['firstName']) && isset( $_POST['lastName']) && !empty($_POST['lastName']) && isset( $_POST['email']) && !empty($_POST['email']) && isset( $_POST['age']) && !empty($_POST['age']) &&isset( $_POST['continent']) &&  !empty($_POST['continent']) && isset( $_POST['esport']) && !empty($_POST['esport']) && isset( $_POST['pays']) && !empty($_POST['pays']) && isset( $_POST['password']) && !empty($_POST['password']))
+        {
+			include 'models/Users.php';
+			//préparer les données pour les mettre dans la base de données
+			$firstName = $_POST['firstName'];
+			$lastName= $_POST['lastName'];
 			$email = $_POST['email'];
-			$pw = $_POST['pw'];
+			$age= $_POST['age'];
+			$pw = password_hash($_POST['password'], PASSWORD_DEFAULT);
+			$pays = $_POST['pays'];
+			$esport = $_POST['esport'];
+			$continent = $_POST['continent'];
 			
 			//comparer avec ce que j'ai en bdd
 			$model = new \Models\Users();
-			//aller chercher les infos de l'utilisateur/iden qui essaye de se connecter
-			$user = $model -> getUserByEmail($email);
 			
-			//si l'identifiant existe dans la base alors âdmin contiendra les infos de cet admin
-			//sinon $admin contiendra false
-			
-			if(!$user)
+			try 
 			{
-				$this -> message1 = "Mauvais identifiant";
-			}
-			else
-			{
-				//vérifier le mot de passe
-				if(password_verify($pw,$user['password']))
-				{
-					//le mot de passe correcpond
-					//connecter l'utilisateur
-					$_SESSION['user'] = $user['firstname'].' '.$user['lastname'];
-					//redirige vers la page tableau de bord du backoffice
-					header('location:index.php?page=userDashboard');
+				//mettre les datas en bdd
+				$model -> AddUser($email, $pw, $firstName, $lastName, $age, $pays, $esport);
+				
+				//aller chercher les infos de l'utilisateur/iden qui essaye de se connecter
+				$user = $model -> getUserByEmail($email);
+				
+				$_SESSION['user'] = $firstName.' '.$lastName;
+				$_SESSION['userId'] = $user['userId'];
+				
+				header('location:index.php?page=userDashboard');
 					exit;
-				}
-				else
-				{
-					$this -> message2 = "Mauvais mot de passe";
-				}
 			}
+			catch(\Exception $e)
+			{
+				$this -> message1 = "Cet email est déjà utilisé";
+			}
+
+        }
 	}
 	
 }
