@@ -11,22 +11,22 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/solid.min.css">
 
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/rubik/stylesheet.css" type="text/css" charset="utf-8" /> 
 
 </head>
 
-<body>
+<body class="body">
 	<header>
 		<div class="container"> <!--FLEX-->
             
-	        <a href="accueil" class="logo_link"> <!--FLEX-->
-                <img src="assets/images/jovirtual.png" alt="Olympics" class="header-nav--logo_item"></img>
+            <a href="accueil" class="logo_link"--> <!--FLEX-->
+                <img src="assets/images/jo2021.jpg" alt="Olympics" class="header-nav--logo_item"></img>
             </a>
             
-
             <ul class="header-nav"><!--FLEX-->
     
                 <li class="header-nav--list_item"><!--FLEX-->
-                    <a href="#" class="header-nav--list_link">E-Sports</a>
+                    <a href="esports" class="header-nav--list_link">Esports</a>
                 </li>
                 
                 <li class="header-nav--list_item"><!--FLEX-->
@@ -43,11 +43,11 @@
                 
                 
                 <?php if(isset($_SESSION['admin'])): ?>
-                    <li class="header-nav--list_item"><a href="index.php?page=dashboard" class="header-nav--list_link">Dashboard</a></li>
-                	<li class="header-nav--list_item"><a href="index.php?page=admin&action=deco" class="header-nav--list_link">Deconnexion</a></li>
+                    <li class="header-nav--list_item"><a href="index.php?page=adminDashboard" class="header-nav--list_link">Dashboard</a></li>
+                	<li class="header-nav--list_item"><a href="index.php?page=adminDashboard&action=deco" class="header-nav--list_link">Deconnexion</a></li>
                 	<p>Bonjour <?= $_SESSION['admin'] ?></p>
             	<?php else: ?>
-            		<li class="header-nav--list_item"><a href="index.php?page=admin" class="header-nav--list_link">Admin</a></li>
+            		<li class="header-nav--list_item"><a href="index.php?page=adminConnexion" class="header-nav--list_link">Admin</a></li>
                 <?php endif; ?>
 		            
                 

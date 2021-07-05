@@ -25,26 +25,21 @@ else
 			$controller -> display();
 			break;
 			
-		case 'admin':
-			$controller = new Controllers\AdminController();
+		case 'adminConnexion':
+			$controller = new Controllers\AdminConnexionController();
 			break;
 			
-		case 'dashboard':
-			$controller = new Controllers\DashboardController();
-			break;
-		
-		case 'deleteEsport':
-			$controller = new Controllers\DashboardController();
-			$controller -> delete();
+		case 'adminDashboard':
+			$controller = new Controllers\AdminDashboardController();
 			break;
 			
-		case 'dashboardAdminEsport':
-			$controller = new Controllers\EsportController();
+		case 'adminDashboardEsport':
+			$controller = new Controllers\AdminDashboardEsportController();
 			$controller -> display();
 			break;
 		
 		case 'addEsport':
-			$controller = new Controllers\EsportController();
+			$controller = new Controllers\AdminDashboardEsportController();
 			//si le formulaire a été soumis
 			if(!empty($_POST))
 			{
@@ -56,19 +51,20 @@ else
 			break;
 			
 		case 'modifyEsport':
-			$controller = new Controllers\EsportController();
+			$controller = new Controllers\AdminDashboardEsportController();
 			//si le formulaire a été soumis
 			if(!empty($_POST))
 			{
 				$controller -> modifySubmit();
 			}
-			else {
+			else 
+			{
 				$controller -> displayModify();	
 			}
 			break;
-			
+		
 		case 'deleteEsport':
-			$controller = new Controllers\EsportController();
+			$controller = new Controllers\AdminDashboardEsportController();
 			$controller -> deleteEsport();
 			break;
 		
@@ -78,7 +74,7 @@ else
 			break;
 		
 		case 'user':
-			$controller = new Controllers\UserController();
+			$controller = new Controllers\UserConnexionController();
 			$controller -> display();
 			break;
 			
@@ -89,5 +85,10 @@ else
 			
 		case 'players':
 			$controller = new Controllers\PlayersController();
+			break;
+		
+		case 'esports':
+			$controller = new Controllers\EsportsController();
+	
 	}
 }

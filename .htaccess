@@ -5,12 +5,14 @@ RewriteEngine on
 
 # un commentaire
 RewriteRule ^accueil$  index.php [L]
-RewriteRule ^admin$  index.php?page=admin [L]
-RewriteRule ^user$  index.php?page=user [L]
+RewriteRule ^adminConnexion$  index.php?page=adminConnexion [L]
+RewriteRule ^adminashboard$  index.php?page=adminDashboard [L]
 
-RewriteRule ^dashboard$  index.php?page=dashboard [L]
+RewriteRule ^user$  index.php?page=user [L] 
 RewriteRule ^userConnexion$  index.php?page=userConnexion [L]
 RewriteRule ^userDashboard$  index.php?page=userDashboard [L]
 RewriteRule ^newUser$  index.php?page=newUser [L]
-RewriteRule ^players  index.php?page=players [L]
+RewriteRule ^players$  index.php?page=players [L]
+RewriteRule ^esports$  index.php?page=esports [L]
+
 

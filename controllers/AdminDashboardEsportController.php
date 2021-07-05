@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-class EsportController {
+class AdminDashboardEsportController {
 	
 	use SessionController;
 	
@@ -19,22 +19,14 @@ class EsportController {
 		$model = new \Models\Esport();
 		$esports = $model -> getAllEsports();
 
-        $template = 'views/dashboardAdminEsport.phtml';
+        $template = 'views/adminDashboardEsport.phtml';
         include 'views/layout.phtml';
 
         
 	}
 	
-	public function deleteEsport()
-	{
-	    $model = new \Models\Esport();
-	    $model -> delete($_GET['id']);
-	    
-	}
-	
 	public function displayAdd()
 	{
-	    
         $template = 'views/addEsport.phtml';
         include 'views/layout.phtml';
 	}
@@ -57,7 +49,7 @@ class EsportController {
 		$model = new \Models\Esport();
 		$model -> AddEsport($nom, $description, $date_debut, $date_fin, $image, $alt);
             
-		header('location:index.php?page=dashboardAdminEsport');
+		header('location:index.php?page=adminDashboardEsport');
 			exit;
 	}
 	
@@ -94,10 +86,15 @@ class EsportController {
 		$model = new \Models\Esport();
 		$modifyEsport = $model -> ModifyEsport($_GET['id'], $nom, $description, $date_debut, $date_fin, $image, $alt);
             
-		header('location:index.php?page=#');
+		header('location:index.php?page=adminDashboardEsport');
 			exit;
 	}
 	
-	
+	public function deleteEsport()
+	{
+	    $model = new \Models\Esport();
+	    $model -> deleteEsport($_GET['id']);
+	    
+	}
 
 }

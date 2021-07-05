@@ -1,0 +1,22 @@
+ <section>
+ <h2>Esports</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nom du esport</th>
+                <th>Image src</th>
+                <th>Image alt</th>
+            </tr>
+            <?php foreach($esports as $esport): ?>
+            <tr>
+                <td><?= $esport['id'] ?></td>
+                <td><?= $esport['name'] ?></td>
+                <td><?= $esport['src'] ?></td>
+                <td><?= $esport['alt'] ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+
+    </section>
+
+

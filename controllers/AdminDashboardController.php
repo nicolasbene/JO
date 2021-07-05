@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-class DashboardController 
+class AdminDashboardController 
 {
 	
 	use SessionController;
@@ -23,7 +23,7 @@ class DashboardController
 	public function display()
 	{
 	
-            $template = 'views/dashboard.phtml';
+            $template = 'views/adminDashboard.phtml';
             include 'views/layout.phtml';
 	}
 	

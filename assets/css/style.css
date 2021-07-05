@@ -1,17 +1,45 @@
-.container {
-    display: flex;
-    flex-wrap: wrap;
-}
+
 
 /* *****************************************************************
 GENERAL
 ***************************************************************** */
-.intro-img{
+.body{
+    background-color: #AA9A9A;
+    
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.container_body{
+    display : flex;
+    justify-content: space-around;
+    
+}
+
+.main{
+        background-color: white;
+        border-radius: 30px;
+        margin : 0.5rem;
+        
+}
+
+.main-img{
     max-width: 100%;
     height: auto;
     margin: auto;
+    
 
 }
+
+h1, p{
+    text-align: center;
+    font-family: 'rubikmedium';
+}
+
 
 
 
@@ -23,9 +51,9 @@ HEADER
 
 
 .header-nav{
-    align-content: center;
-    align-items:center;
+    
     display: flex;
+    
 }
 
 .header-nav--list_item{
@@ -40,8 +68,9 @@ HEADER
     cursor: pointer;
     font-size: 16px;
     font-weight: 400;
-    color: black;
+    color: white;
     text-transform: uppercase;
+    
 }
 
 .header-nav--list_link::after {
@@ -49,7 +78,7 @@ HEADER
     display: flex;
     width: 0;
     height: 2px;
-    background : black;
+    background : white;
     transition: width .3s
 }
 
@@ -60,8 +89,9 @@ HEADER
 }
 
 .header-nav--logo_item {
-    max-width: 50%;
+    max-width: 25%;
 	height: auto;
+	background-color: none;
 }
 
 
@@ -70,15 +100,13 @@ HEADER
 /* *****************************************************************
 FOOTER
 ***************************************************************** */
-.footer{
-    display: flex;
-    justify-content: space-around;
-}
+
 
 .footer-nav{
-    align-content: center;
-    align-items:center;
+  
     display: flex;
+    justify-content: space-around;
+    bottom: 0px;
 }
 
 .footer-nav--list_item{
@@ -93,6 +121,6 @@ FOOTER
     cursor: pointer;
     font-size: 16px;
     font-weight: 400;
-    color: black;
+    color: white;
     text-transform: uppercase;
 }

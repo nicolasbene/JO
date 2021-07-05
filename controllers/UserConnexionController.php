@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-class AdminController {
+class UserConnexionController {
     private $message1;
     private $message2;
     
@@ -11,9 +11,10 @@ class AdminController {
         
         $this -> message1 = "";
         $this -> message2 = "";
-        $this -> display();
+       
+
         
-        if(!empty($_POST))
+       if(!empty($_POST))
 		{
 		    $this -> submit();
 		
@@ -22,13 +23,12 @@ class AdminController {
 		{
 			$this -> disconnect();
 		}
-		
     }
     
 	public function display()
 	{
 		//afficher le formulaire de connexion
-            $template = 'views/admin.phtml';
+            $template = 'views/userConnexion.phtml';
             include 'views/layout.phtml';
 	}
 	public function disconnect()
@@ -40,35 +40,37 @@ class AdminController {
 	}
 	public function submit() 
 	{
-	    	include 'models/Admin.php';
+	    	include 'models/Users.php';
 			
 			$email = $_POST['email'];
 			$password = $_POST['password'];
 			
 			//comparer avec ce que j'ai en bdd
-			$model = new \Models\Admin();
+			$model = new \Models\Users();
 			//aller chercher les infos de l'utilisateur/iden qui essaye de se connecter
-			$admin = $model -> getAdminByEmail($email);
+			$user = $model -> getUserByEmail($email);
 			
+			//si l'identifiant existe dans la base alors âdmin contiendra les infos de cet user
 			
-			//si l'identifiant existe dans la base alors âdmin contiendra les infos de cet admin
+			//sinon $user contiendra false
 			
-			//sinon $admin contiendra false
-			
-			if(!$admin)
+			if(!$user)
 			{
 				$this -> message1 = "Mauvais identifiant";
+
 			}
 			else
 			{
 				//vérifier le mot de passe
-				if(password_verify($password,$admin['password']))
+				if(password_verify($password,$user['password']))
 				{
 					//le mot de passe correcpond
 					//connecter l'utilisateur
-					$_SESSION['admin'] = $admin['firstname'].' '.$admin['lastname'];
+					$_SESSION['user'] = $user['firstname'].' '.$user['lastname'];
+					$_SESSION['userId'] = $user['userId'];
+
 					//redirige vers la page tableau de bord du backoffice
-					header('location:index.php?page=dashboard');
+					header('location:index.php?page=userDashboard');
 					exit;
 					
 				}
